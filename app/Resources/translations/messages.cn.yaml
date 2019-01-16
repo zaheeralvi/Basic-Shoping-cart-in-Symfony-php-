@@ -1,0 +1,6 @@
+# Obtao\ForumBundle\Resources\translations\messages.en.yml
+forum: #the first key is always the bundle name
+  action: #usually links or buttons in your application
+    lastPosts: 查看上次发布的答案
+    newAnswer: 添加一个新的答案
+    newQuestion: 发布一个新问题

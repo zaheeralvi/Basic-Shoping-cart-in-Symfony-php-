@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Shoping Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../web/css/cart.css">
+</head>
+<body style="background: linear-gradient(to right ,#827799, #a9c7df);">
+<div class="main" style="text-align: center;margin: 20px auto;">
+    {% block body %}
+    <h1>Shoping Cart</h1>
+
+    {% if product|length == 0 %}
+        <h3>No Product Found</h3>
+    {% endif %}
+
+
+
+
+        {% for message in app.flashes('notice') %}
+            <div class="flash-notice">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <button style="float: right;background-color:#6f658a;border-radius: 20px;color: white;position: relative;right: 280px;top:-50px;">
+            <a href="{{ path('add_new_product') }}" style="text-decoration:none;color: white;font-weight:100;padding: 10px;"
+               class="fa fa-plus-circle" aria-hidden="true"> Add New Product</a></button>
+
+        <table class="data" style="width: 70%;margin: 50px auto;text-align: center;border-collapse: collapse;">
+
+            <tr style="margin-bottom: 50px;background-color: #6f658a;">
+                <th><h1>Product</h1></th>
+                <th><h1>Price</h1></th>
+                <th>&nbsp;</th>
+            </tr>
+
+            {% for entry in product %}
+                <tr style="background-color: white;margin-top: 30px;padding: 20px;">
+                    <td><h2>{{ entry.name }}</h2></td>
+                    <td>{{ entry.price }} $</td>
+                    <td>
+                        <button style="background-color: transparent;border: 1px solid #6f658a;border-radius: 5px;color: #6f658a">
+                            <a style="text-decoration: none;color: black" href="{{ path('add_to_cart' , {'id': entry.id }) }}">Add to Cart</a>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+
+
+        </table>
+
+      
+ {% endblock %}
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+

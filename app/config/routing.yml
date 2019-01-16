@@ -1,0 +1,51 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+
+
+test_show:
+    path:      /test
+    defaults:  { _controller: AppBundle:Test:show }
+
+database:
+    path:      /products
+    defaults:  { _controller: AppBundle:Test:database }
+
+database:
+    path:      /task
+    defaults:  { _controller: AppBundle:Task:new }
+    requirements:
+            page: '\d+'
+
+show_cart:
+    path:      /cart
+    defaults:  { _controller: AppBundle:Test:byquary }
+
+create_product:
+    path:      /create
+    defaults:  { _controller: AppBundle:Cart:create }
+
+show_newproduct:
+    path:      /newproduct
+    defaults:  { _controller: AppBundle:Cart:products }
+
+show_mycart:
+    path:      /mycart
+    defaults:  { _controller: AppBundle:Cart:mycart }
+
+delete_product:
+    path:      /deleteproduct
+    defaults:  { _controller: AppBundle:Cart:deleteproduct }
+
+add_cart:
+    path:      /addcart
+    defaults:  { _controller: AppBundle:Cart:addcart }
+
+update_cart:
+    path:      /update_cart
+    defaults:  { _controller: AppBundle:Cart:update_cart }
+
+delete_cart:
+    path:      /delete_cart
+    defaults:  { _controller: AppBundle:Cart:delete_cart }

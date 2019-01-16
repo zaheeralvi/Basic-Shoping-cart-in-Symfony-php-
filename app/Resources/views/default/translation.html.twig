@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+    <title>translation switcher</title>
+</head>
+<body>
+{% block form %}
+    <h2>{{ "forum.action.newAnswer"|trans }}</h2>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end (form)}}
+{% endblock %}
+</body>
+</html>

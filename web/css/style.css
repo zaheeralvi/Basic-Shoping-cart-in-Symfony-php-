@@ -1,0 +1,105 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	background: linear-gradient(to right ,#827799, #a9c7df);
+}
+.container{
+	width: 70% !important;
+	margin: 10px auto;
+	text-align: center;
+}
+.container h1{
+	margin:  50px auto;
+}
+.nav ul{
+	display: inline-block;
+	list-style: none;
+}
+.nav ul li{
+	display: inline-block;
+	padding: 10px;
+
+}
+.nav ul li a{
+	text-decoration: none;
+	color: #000;
+	font-size: 20px;
+	padding: 10px;
+	background: linear-gradient(to right ,#827799, #a9c7df);
+	border-radius: 10px;
+	border:1px dotted #000;
+}
+fieldset{
+	padding: 50px;
+	margin: 70px auto;
+}
+fieldset input,fieldset button{
+	display: block;
+	font-size: 20px;
+	margin: 10px auto;
+	padding: 10px;
+	border-radius: 20px;
+	width: 65%;
+	background-color: #a1c4d8;
+}
+.container label{
+	display: none;
+}
+legend{
+	font-size: 25px;
+	border: none !important;
+}
+.product{
+	text-align: left;
+	background-color: #a9c7df;
+	border-radius: 10px;
+	border: 1px dotted #827799;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+.product h4{
+	display: inline-block;
+	width: 50%;
+}
+.product p{
+	display: inline-block;
+	width: 10%;
+}
+.product a{
+	width: 15%;
+	display: inline-block;
+	text-decoration: none;
+	background-color: lightgreen;
+	padding: 10px;
+	margin: 8px;
+	color: #000;
+	border-radius: 10px;
+}
+.product span{
+	float: right;
+	width: 20%;
+}
+.update{
+	display: inline;
+	margin-left: 50px;
+}
+.update input{
+	width: 20%;
+	padding: 5px;
+	border-radius: 10px;
+	border: 1px dotted #0080ff;
+}
+.update a{
+	padding: 7px;
+	width: 7%;
+}
+.totals{
+	padding: 10px 0;
+	font-size: 25px;
+}
+.totals p{
+	width: 40%;
+}

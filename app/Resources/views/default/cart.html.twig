@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shoping Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <!-- <link rel="stylesheet" type="text/css" href="../../../../web/css/cart.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    {% block stylesheets %}
+        <link href="{{ asset('css/cart.css') }}" rel="stylesheet" />
+    {% endblock %}
+</head>
+<body style="background: linear-gradient(to right ,#827799, #a9c7df);">
+<div class="main" style="width: 70%;margin: 50px auto;text-align: center;">
+
+    <h1>Shoping Cart</h1>
+
+
+
+
+
+        <button style="float: right;background-color:#6f658a;border-radius: 20px;color: white;position: relative;bottom: 10px;
+        right: 10px"><a href="{{ path('add_new_product') }}" style="font-weight: 100;padding: 10px;
+        color: white;text-decoration: none"class="fa fa-plus-circle" aria-hidden="true"> Add New Product</a></button>
+
+        <button style="float: right;background-color:#6f658a;border-radius: 20px;color: white;position: relative;bottom: 10px;
+        right: 10px"><a href="{{ path('products') }}" style="font-weight: 100;padding: 10px;
+        color: white;text-decoration: none"class="fa fa-list" aria-hidden="true"> View Products</a></button>
+
+        <table class="data" style="border-collapse: collapse;width: 100%">
+
+            <tr style="background-color: #6f658a;border-radius: 50px;">
+                <th><h1>Product</h1></th>
+                <th><h1>Price</h1></th>
+                <th colspan="2">Quantity</th>
+
+            </tr>
+            {% set result=0 %}
+            {% set test %}
+                {% set quantity=1 %}
+            {% endset %}
+            {% for entry in product %}
+                <tr style="background-color: white;bottom-top: 80px solid transparent;padding: 20px;">
+                    <td><h2>{{ entry.name }}</h2></td>
+                    {% set quantity=entry.price * entry.quantity %}
+                    <td><h3>{{ quantity }} $</h3></td>
+
+                    {% set result=result+ quantity %}
+                    <td>&nbsp;</td>
+                    <td>
+                        <input type="number" placeholder="{{ entry.quantity }}" value="{{ entry.quantity }}"  min="0" name="test" id="{{ entry.id }}">
+
+                        <button id="{{ entry.id }}" style="background-color: #6f658a;border-radius: 5px;color: #fff;" onclick="myfunction(this.id)" type="button">Save</button>
+                        <button id="{{ entry.id }}" style="background-color: #6f658a;border-radius: 5px;color: #fff;" onclick="delfunction(this.id)">Delete</button>
+
+                    </td>
+                </tr>
+            {% endfor %}
+
+
+            <tr style="background-color: #6f658a;padding: 30px;">
+                <td style="color: white"><h2>Total Price:</h2></td>
+
+                <td style="color: white"><h2>{{ result }} $</h2></td>
+                <td>&nbsp;</td>
+                <td>{#<button style="float: right;background-color:#ffffff;border-radius: 20px;color: white;"><i style="color: black;background-color: red;padding: 20px;
+                border-radius: inherit" class="fa fa-trash" aria-hidden="true"> Remove All</i></button>#} &nbsp;</td>
+
+            </tr>
+
+
+        </table>
+
+
+
+
+
+</div>
+<script>
+
+
+    function delfunction(id) {
+        var id=id;
+        $.ajax({
+            type: "POST",
+            url: "{{ path('ajax_call_del') }}",
+            data: { id: id},
+            success: function (quantity, dataType) {
+               alert(quantity);
+            }
+        });
+
+    }
+
+
+
+
+
+    function myfunction(id) {
+        var id=id;
+         var quantity = document.getElementById(id).value;
+       /*var quantity = document.getElementsByClassName().value;*/
+
+        $.ajax({
+            type: "POST",
+            url: "{{ path('ajax_call') }}",
+            data: {quantity: quantity, id: id},
+            success: function (quantity, dataType) {
+                $(id).load(quantity);
+            }
+        });
+
+    }
+</script>
+</body>
+</html>

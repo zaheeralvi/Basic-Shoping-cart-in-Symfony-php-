@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+{% block header %}
+<div class="header">
+    <div class="container">
+        <h1>Shopping Cart</h1>
+        <div class="nav">
+            <ul>
+                <li><a href="{{ path('create_product') }}"> Add Product</a></li>
+                <li><a href="{{ path('show_newproduct') }}"> View Products</a></li>
+                <li><a href="{{ path('show_mycart') }}"> My Cart</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<div class="main">
+    <div class="container">
+        {% block main %}
+        {% endblock %}
+    </div>
+</div>
+</body>
+</html>

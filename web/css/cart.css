@@ -1,0 +1,38 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	background: linear-gradient(to right ,#827799, #a9c7df);
+}
+.main{
+	width: 60%;
+	margin: 0px auto;
+	text-align: center;
+
+}
+.main h1{
+	margin: 60px auto;
+	color: white;
+}
+.data{
+	width: 80%;
+	background-color: transparent;
+	color: black;
+	margin: 10px auto;
+	border-collapse: collapse;
+	border-radius: 20px
+}
+.data tr{
+	width: 100%;
+}
+.data th{
+	
+	font-weight: bold;
+	text-align: center;
+	color: white;
+}
+.data td{
+	color: #958aa8;
+	padding: 20px;
+}

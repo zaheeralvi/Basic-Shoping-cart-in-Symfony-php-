@@ -1,0 +1,25 @@
+{% extends "cart/base.html.twig" %}
+{% block main %}
+    <fieldset>
+        <legend>Product Details:</legend>
+        {{ form_start(form,{ 'attr' : { 'class': 'formclass' } }) }}
+        <div class="error">
+            {{ form_errors(form.name) }}
+            {{ form_errors(form.price) }}
+        </div>
+        <div>
+            {{ form_widget(form.name,{'attr' :{'placeholder': 'Product name'}}) }}
+        </div>
+        <div>
+            {{ form_widget(form.price,{'attr' :{'placeholder': 'Product Price'}}) }}
+        </div>
+        <div>
+            {{ form_widget(form.info,{'attr' :{'placeholder': 'Product information (optional)'}}) }}
+        </div>
+
+        <div>
+            {{ form_row(form.save, { 'label': 'Save' }) }}
+        </div>
+        {{ form_end(form, {'render_rest': false}) }}
+    </fieldset>
+{% endblock %}

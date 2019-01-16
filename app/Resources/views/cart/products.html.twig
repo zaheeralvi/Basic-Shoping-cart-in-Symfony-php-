@@ -1,0 +1,49 @@
+{% extends "cart/base.html.twig" %}
+{% block main %}
+    <div id="Foo" style="display: none;position: fixed;top: 115px;right: 275px;"><h3 class="text-success">Added to cart</h3></div>
+        {% for entry in product %}
+                <div class="product" id="{{ entry.id }}">
+                    <h4>{{ entry.name }}</h4>
+                    <p>{{ entry.price }} $</p>
+                    <span>
+                    <i class="btn btn-success" id="{{ entry.id }}" onclick="cartfunction(this.id)">Add to Cart</i>
+                    <i class="btn btn-danger" id="{{ entry.id }}" onclick="delfunction(this.id)">Delete</i>
+                    </span>
+                </div>
+        {% endfor %}
+    <script>
+        function delfunction(id) {
+            var id=id;
+            $.ajax({
+                type: "POST",
+                url: "{{ path('delete_product') }}",
+                data: { id: id},
+                success: function (res) {
+                    document.getElementById(id).style.display='none';
+                }
+            });
+
+        }
+        function cartfunction(id) {
+            var id=id;
+            $.ajax({
+                type: "POST",
+                url: "{{ path('add_cart') }}",
+                data: { id: id},
+                success: function (res) {
+                    var f = document.getElementById('Foo');
+                    if (f.style.display == 'none'){
+                        f.style.display = 'inline-block';
+                    }
+                    setInterval(function() {
+                        f.style.display = (f.style.display == 'inline-block' ? 'none' : 'none');
+                    }, 2000);
+
+                }
+            });
+
+        }
+
+
+    </script>
+{% endblock %}

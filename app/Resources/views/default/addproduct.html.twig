@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shoping Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../web/css/cart.css">
+    <style>
+        .formclass{
+            margin: 50px;
+            border: 1px solid #6f658a;
+            padding: 50px;
+
+        }
+        .formclass input{
+            display: block;
+            padding: 10px;
+            width: 200px;
+            border: 1px solid gray;
+            border-radius: 5px;
+
+        }
+        .formclass button{
+            padding: 10px;
+            margin: 20px 0 0 170px ;
+            border-radius: 10px;;
+            background-color: #6f658a;
+            color: #fff;
+        }
+        select{
+            width: 37%;
+            border-radius: 5px;
+            padding: 10px;
+            display: block;
+        }
+        label{
+            font-size: 20px;
+            margin: 5px 0;
+        }
+        .error{
+            color:#fc0;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body style="background: linear-gradient(to right ,#827799, #a9c7df);">
+<div class="main" style="width: 60%;margin: 70px auto;text-align: left;font-weight: bolder;">
+
+    <h1>Shoping Cart</h1>
+
+
+
+
+
+        <button style="float: right;background-color:#6f658a;border-radius: 20px;position: relative;bottom: 40px;right: 240px;">
+            <a href="{{ path('products') }}" style="font-weight:100;text-decoration:none;color: white;padding: 10px;
+	" class="fa fa-list" aria-hidden="true"> View Products</a></button>
+
+        <button style="float: right;background-color:#6f658a;border-radius: 20px;position: relative;bottom: 40px;right: 240px;">
+            <a href="{{ path('show_cart') }}" style="text-decoration: none;color: white;font-weight:100 ;padding: 10px;" class="fa fa-list" aria-hidden="true"> View Cart</a></button>
+
+
+    {{ form_start(form,{ 'attr' : { 'class': 'formclass' } }) }}
+    <div class="error">
+        {{ form_errors(form.name) }}
+        {{ form_errors(form.price) }}
+    </div>
+    <div>
+        {{ form_widget(form.name,{'attr' :{'placeholder': 'Product name'}}) }}
+    </div>
+    <div>
+        {{ form_widget(form.price,{'attr' :{'placeholder': 'Product Price'}}) }}
+    </div>
+
+
+    <div>
+        {{ form_row(form.save, { 'label': 'Save' }) }}
+    </div>
+    {{ form_end(form, {'render_rest': false}) }}
+{#
+    <fieldset style="padding: 15px;">
+        <legend>Add Product</legend>
+        {{ form(form) }}
+
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+    </fieldset>
+
+
+    {{ form_end(form) }}
+#}
+
+</div>
+</body>
+</html>

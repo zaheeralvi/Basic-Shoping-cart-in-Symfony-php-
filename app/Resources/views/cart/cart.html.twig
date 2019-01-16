@@ -1,0 +1,63 @@
+{% extends "cart/base.html.twig" %}
+{% block main %}
+    <div class="mycart">
+            {% set price =0 %}
+            {% set unit =1 %}
+        {% for entry in product %}
+                <div class="product" id="{{ entry.id }}">
+                    <h4>{{ entry.name }}</h4>
+                    <p id="{{ entry.id }}p" class="pPrice">{{ entry.price * entry.quantity }}</p>
+                    {% set unit= entry.price * entry.quantity %}
+                    {% set price= price + unit %}
+                    <div class="update">
+                        <input type="number" name="quantity" class="qty" placeholder="{{ entry.quantity }}" value="{{ entry.quantity }}"  min="0" id="{{ entry.id }}1">
+                        <i class="btn btn-primary" id="{{ entry.id }}" onclick="myfunction(this.id)">Save</i>
+                        <i class="btn btn-danger pull-right" id="{{ entry.id }}" onclick="delfunction(this.id)">X</i>
+                    </div>
+                </div>
+        {% endfor %}
+        <div class="product">
+            <div class="totals">
+                <h4>Total Price:</h4>
+                <p  id="totalprice">$ {{ price }}</p>
+            </div>
+        </div>
+
+    </div>
+<script>
+    function delfunction(id) {
+        var id=id;
+        $.ajax({
+            type: "POST",
+            url: "{{ path('delete_cart') }}",
+            data: { id: id},
+            success: function (res) {
+            document.getElementById(id).style.display='none';
+            }
+        });
+
+    }
+    function myfunction(id) {
+      var id=id;
+        var qty=id+'1';
+        var price=id+'p';
+         var quantity = document.getElementById(qty).value;
+        /*var quantity = document.getElementsByClassName().value;*/
+        $.ajax({
+            type: "POST",
+            url: "{{ path('update_cart') }}",
+            data: {quantity: quantity, id: id},
+            success: function (res) {
+            document.getElementById(price).innerHTML = res;
+
+                var total=0;
+                $('.pPrice').each(function(){
+                    total = total + parseFloat($(this).html());
+                });
+                $('#totalprice').html(total)
+            }
+        });
+
+    }
+</script>
+{% endblock %}
